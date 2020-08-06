@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Add" android:id="@+id/add"></item>
-    <item android:title="Info" android:id="@+id/info"></item>
+
+    <item android:title="Add Currency" android:id="@+id/add" ></item>
+
+
+    <item android:title="Your Country" android:id="@+id/YourCountry"></item>
 </menu>
