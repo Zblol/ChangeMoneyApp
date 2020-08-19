@@ -7,10 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
