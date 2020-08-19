@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1eb445</color>
+    <color name="colorPrimary">@drawable/actionbar_gradient</color>
 
     <color name="colorPrimaryDark">#1d6b1a</color>
     <color name="colorAccent">#babdba</color>
     <color name="frangment">#97C599</color>
     <color name="menu">#e7c4edd6</color>
+    <color name="button">#E7FFFFFF</color>
 </resources>
