@@ -6,6 +6,6 @@
 
 
     <item android:title="Your Country"
-        android:id="@+id/YourCountry"></item>
+        android:id="@+id/yourCountry"></item>
 
 </menu>

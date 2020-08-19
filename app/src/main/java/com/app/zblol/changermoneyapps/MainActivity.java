@@ -1,17 +1,18 @@
 package com.app.zblol.changermoneyapps;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.MenuItem;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 NavController navController;
 BottomNavigationView bottomNavigationView;
-ListView currencyListView;
+
 
 
     @Override
@@ -46,5 +47,22 @@ ListView currencyListView;
         menuInflater.inflate(R.menu.main_menu,menu);
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.add:
+                Intent intent1 = new Intent(MainActivity.this,AddCurrency.class);
+                startActivity(intent1);
+                return  true;
+            case R.id.yourCountry:
+                Intent intent2 = new Intent(MainActivity.this,YourCountry.class);
+                startActivity(intent2);
+                return  true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

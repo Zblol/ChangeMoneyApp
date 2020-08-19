@@ -14,7 +14,7 @@ import androidx.fragment.app.ListFragment;
  * Use the {@link CurrencyList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CurrencyList extends ListFragment {
+public class CurrencyList extends Fragment {
 
 
 
