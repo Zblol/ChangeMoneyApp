@@ -1,12 +1,29 @@
 package com.app.zblol.changermoneyapps;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
+
+import java.util.jar.Pack200;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import static androidx.core.content.ContextCompat.checkSelfPermission;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,18 +73,113 @@ public class ScanPrice extends Fragment {
         }
     }
 
-    SurfaceView surfaceView;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+            switch(requestCode){
+                case RequestCameraPermission:{
+                    if(grantResults[0] == PackageManager.PERMISSION_GRANTED ){
+                        if(checkSelfPermission(getContext(),Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                            return;
+                        }
+                        try{
+                            cameraSource.start(cameraView.getHolder());
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    SurfaceView cameraView;
+    TextView textView;
+    CameraSource cameraSource;
+
+    final int RequestCameraPermission = 1001;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View SCANER = inflater.inflate(R.layout.fragment_scan_price, container, false);
 
-        surfaceView = (SurfaceView) SCANER.findViewById(R.id.camera_view);
+        cameraView = (SurfaceView) SCANER.findViewById(R.id.surfaceView);
+        textView = (TextView) SCANER.findViewById(R.id.textView);
+
+        final TextRecognizer textRecognizer = new TextRecognizer.Builder(getContext()).build();
+            if (!textRecognizer.isOperational()){
+                Log.i("ScanPrice","Detected dependes are not found");
+            }
+
+            cameraSource = new CameraSource.Builder(getContext(),textRecognizer)
+                    .setFacing(CameraSource.CAMERA_FACING_BACK)
+                    .setRequestedPreviewSize(1280,1240)
+                    .setRequestedFps(2.0f)
+                    .setAutoFocusEnabled(true)
+                    .build();
+
+            cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
+                @Override
+                public void surfaceCreated(SurfaceHolder holder) {
+                    try {
+                        if (checkSelfPermission(getContext(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED){
+                            requestPermissions( new String[] {Manifest.permission.CAMERA},
+                                    RequestCameraPermission);
 
 
+                        }
+                        cameraSource.start(cameraView.getHolder());
+
+                    }catch (Exception e){
+                            e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+                }
+
+                @Override
+                public void surfaceDestroyed(SurfaceHolder holder) {
+                    cameraSource.stop();
+
+                }
+            });
+
+            textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
+                @Override
+                public void release() {
+
+                }
+
+                @Override
+                public void receiveDetections(Detector.Detections<TextBlock> detections) {
+                    final SparseArray<TextBlock> items = detections.getDetectedItems();
+                    if(items.size() != 0 ){
+                        textView.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                StringBuilder stringBuilder = new StringBuilder();
+                                for(int i = 0; i < items.size(); i++ ){
+                                    TextBlock item = items.valueAt(i);
+                                    stringBuilder.append(item.getValue());
+                                    stringBuilder.append("\n");
+                                }
+                                textView.setText(stringBuilder.toString());
+                            }
+                        });
+                    }
+
+                }
+            });
 
 
         return  SCANER;

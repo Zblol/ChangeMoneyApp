@@ -7,8 +7,17 @@
     tools:context=".ScanPrice">
 
   <SurfaceView
-      android:id="@+id/camera_view"
+      android:id="@+id/surfaceView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      android:layout_gravity="bottom"
+      android:id="@+id/textView"
+      android:text="Hello"
+      android:textSize="25dp"
+      android:textColor="#FFFFFF"/>
 
 </FrameLayout>
