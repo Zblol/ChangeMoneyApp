@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -57,6 +58,8 @@ BottomNavigationView bottomNavigationView;
             case R.id.yourCountry:
                 Intent intent2 = new Intent(MainActivity.this,YourCountry.class);
                 startActivity(intent2);
+                Toast toast = Toast.makeText(getApplicationContext(),"Choose your country",Toast.LENGTH_SHORT);
+                toast.show();
                 return  true;
             default:
                 return super.onOptionsItemSelected(item);
