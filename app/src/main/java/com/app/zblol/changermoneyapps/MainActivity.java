@@ -1,6 +1,7 @@
 package com.app.zblol.changermoneyapps;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -58,7 +59,8 @@ BottomNavigationView bottomNavigationView;
             case R.id.yourCountry:
                 Intent intent2 = new Intent(MainActivity.this,YourCountry.class);
                 startActivity(intent2);
-                Toast toast = Toast.makeText(getApplicationContext(),"Choose your country",Toast.LENGTH_SHORT);
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context,"Choose your country",Toast.LENGTH_SHORT);
                 toast.show();
                 return  true;
             default:
