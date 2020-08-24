@@ -165,12 +165,12 @@ public class ScanPrice extends Fragment {
                 @Override
                 public void receiveDetections(Detector.Detections<TextBlock> detections) {
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
-                    if(items.size() != 0 ) {
+                    if (items.size() != 0 ) {
                         textView.post(new Runnable() {
                             @Override
                             public void run() {
                                 StringBuilder stringBuilder = new StringBuilder();
-                                for(int i = 0; i < items.size(); i++ ) {
+                                for (int i = 0; i < items.size(); i++ ) {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
                                     stringBuilder.append("\n");
