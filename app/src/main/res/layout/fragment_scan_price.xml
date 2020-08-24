@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
     tools:context=".ScanPrice">
 
   <SurfaceView
@@ -11,13 +11,91 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
-  <TextView
+
+  <FrameLayout
       android:layout_width="match_parent"
-      android:layout_height="200dp"
-      android:layout_gravity="bottom"
-      android:id="@+id/textView"
-      android:text="Hello"
-      android:textSize="25dp"
-      android:textColor="#FFFFFF"/>
+      android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/scanpreview" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <TableLayout
+          android:layout_width="267dp"
+          android:layout_height="157dp"
+          android:layout_marginBottom="148dp"
+          android:background="@drawable/info_scan_background"
+          android:hapticFeedbackEnabled="false"
+          android:orientation="horizontal"
+          android:stretchColumns="0,1"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+          <TextView
+              android:id="@+id/textView9"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="860,00"
+              android:textAlignment="viewEnd"
+              android:textColor="@color/button"
+              android:textSize="24sp"
+              android:textStyle="bold" />
+
+          <TextView
+              android:id="@+id/textView10"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="RUB"
+              android:textAlignment="center"
+              android:textColor="@color/button"
+              android:textSize="24sp"
+              android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+          <TextView
+              android:id="@+id/textView11"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="10,00"
+              android:textAlignment="viewEnd"
+              android:textColor="@color/button"
+              android:textSize="24sp"
+              android:textStyle="bold" />
+
+          <TextView
+              android:id="@+id/textView12"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="EUR"
+              android:textAlignment="center"
+              android:textColor="@color/button"
+              android:textSize="24sp"
+              android:textStyle="bold" />
+        </TableRow>
+
+      </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </FrameLayout>
 
 </FrameLayout>

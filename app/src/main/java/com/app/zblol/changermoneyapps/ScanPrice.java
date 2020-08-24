@@ -99,8 +99,10 @@ public class ScanPrice extends Fragment {
     SurfaceView cameraView;
     TextView textView;
     CameraSource cameraSource;
+    int camViewX = 1280;
+    int camViewY = 1240;
 
-    final int RequestCameraPermission = 1001;
+    final int RequestCameraPermission = 101;
 
 
     @Override
@@ -110,16 +112,16 @@ public class ScanPrice extends Fragment {
         View SCANER = inflater.inflate(R.layout.fragment_scan_price, container, false);
 
         cameraView = (SurfaceView) SCANER.findViewById(R.id.surfaceView);
-        textView = (TextView) SCANER.findViewById(R.id.textView);
+        textView = (TextView) SCANER.findViewById(R.id.textView9);
 
         final TextRecognizer textRecognizer = new TextRecognizer.Builder(getContext()).build();
-            if (!textRecognizer.isOperational()){
+            if (!textRecognizer.isOperational()) {
                 Log.i("ScanPrice","Detected dependes are not found");
             }
 
             cameraSource = new CameraSource.Builder(getContext(),textRecognizer)
                     .setFacing(CameraSource.CAMERA_FACING_BACK)
-                    .setRequestedPreviewSize(1280,1240)
+                    .setRequestedPreviewSize(camViewX,camViewY)
                     .setRequestedFps(2.0f)
                     .setAutoFocusEnabled(true)
                     .build();
@@ -129,7 +131,7 @@ public class ScanPrice extends Fragment {
                 public void surfaceCreated(SurfaceHolder holder) {
                     try {
                         if (checkSelfPermission(getContext(), Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED){
+                        != PackageManager.PERMISSION_GRANTED) {
                             requestPermissions( new String[] {Manifest.permission.CAMERA},
                                     RequestCameraPermission);
 
@@ -163,12 +165,12 @@ public class ScanPrice extends Fragment {
                 @Override
                 public void receiveDetections(Detector.Detections<TextBlock> detections) {
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
-                    if(items.size() != 0 ){
+                    if(items.size() != 0 ) {
                         textView.post(new Runnable() {
                             @Override
                             public void run() {
                                 StringBuilder stringBuilder = new StringBuilder();
-                                for(int i = 0; i < items.size(); i++ ){
+                                for(int i = 0; i < items.size(); i++ ) {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
                                     stringBuilder.append("\n");
