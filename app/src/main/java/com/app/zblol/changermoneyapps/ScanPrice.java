@@ -1,6 +1,7 @@
 package com.app.zblol.changermoneyapps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -101,8 +102,10 @@ public class ScanPrice extends Fragment {
     CameraSource cameraSource;
     int camViewX = 1280;
     int camViewY = 1240;
-
     final int RequestCameraPermission = 101;
+
+    TextView myCurrency;
+    TextView baseCurrency;
 
 
     @Override
@@ -113,6 +116,11 @@ public class ScanPrice extends Fragment {
 
         cameraView = (SurfaceView) SCANER.findViewById(R.id.surfaceView);
         textView = (TextView) SCANER.findViewById(R.id.textView9);
+
+        myCurrency = (TextView) SCANER.findViewById(R.id.myCurrency);
+        baseCurrency = (TextView) SCANER.findViewById(R.id.baseCurrency);
+
+
 
         final TextRecognizer textRecognizer = new TextRecognizer.Builder(getContext()).build();
             if (!textRecognizer.isOperational()) {

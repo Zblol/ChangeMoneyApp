@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/currencyList"
-        android:name="com.app.zblol.changermoneyapps.CurrencyList"
+        android:name="com.app.zblol.changermoneyapps.MyCurrency"
         android:label="fragment_currency_list"
-        tools:layout="@layout/fragment_currency_list" />
+        tools:layout="@layout/fragment_mycurrency" />
     <fragment
         android:id="@+id/scanPrice"
         android:name="com.app.zblol.changermoneyapps.ScanPrice"
