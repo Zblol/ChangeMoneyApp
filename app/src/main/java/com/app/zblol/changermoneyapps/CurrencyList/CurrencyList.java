@@ -40,14 +40,14 @@ public class CurrencyList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<PostCode>> call, Response<List<PostCode>> response) {
 
-                if(!response.isSuccessful()){
+                if(!response.isSuccessful()) {
                     textViewResult.setText("Code:" + response.code());
                     return;
                 }
 
                 List<PostCode> postcodes = response.body();
 
-                for(PostCode postCode : postcodes){
+                for(PostCode postCode : postcodes) {
                     String content = "";
                     content+= postCode.getText();
 

@@ -7,7 +7,8 @@ import retrofit2.http.GET;
 
 public interface ApiCurrencyList {
 
+String apiKey= "latest?access_key=4019896702a9dfa26551a68fa0ac3638";
 
-    @GET("latest?access_key=4019896702a9dfa26551a68fa0ac3638")
+    @GET(apiKey)
     Call<List<PostCode>> getPostCodes();
 }
