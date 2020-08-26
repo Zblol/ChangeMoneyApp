@@ -56,9 +56,10 @@
               android:textStyle="bold" />
 
           <TextView
-              android:id="@+id/textView10"
+              android:id="@+id/baseCurrency"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:clickable="true"
               android:text="RUB"
               android:textAlignment="center"
               android:textColor="@color/button"
@@ -83,9 +84,10 @@
               android:textStyle="bold" />
 
           <TextView
-              android:id="@+id/textView12"
+              android:id="@+id/myCurrency"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:clickable="true"
               android:text="EUR"
               android:textAlignment="center"
               android:textColor="@color/button"

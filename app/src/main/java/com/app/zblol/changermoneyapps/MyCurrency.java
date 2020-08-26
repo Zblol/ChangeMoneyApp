@@ -7,14 +7,13 @@ import android.view.ViewGroup;
 
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CurrencyList#newInstance} factory method to
+ * Use the {@link MyCurrency#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CurrencyList extends Fragment {
+public class MyCurrency extends Fragment {
 
 
 
@@ -36,8 +35,8 @@ public class CurrencyList extends Fragment {
      * @return A new instance of fragment CurrencyList.
      */
     // TODO: Rename and change types and number of parameters
-    public static CurrencyList newInstance(String param1, String param2) {
-        CurrencyList fragment = new CurrencyList();
+    public static MyCurrency newInstance(String param1, String param2) {
+        MyCurrency fragment = new MyCurrency();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -46,7 +45,7 @@ public class CurrencyList extends Fragment {
 
     }
 
-    public CurrencyList() {
+    public MyCurrency() {
         // Required empty public constructor
 
 
@@ -67,7 +66,7 @@ public class CurrencyList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return  inflater.inflate(R.layout.fragment_currency_list, container, false);
+        return  inflater.inflate(R.layout.fragment_mycurrency, container, false);
 
 
 

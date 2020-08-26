@@ -4,28 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddCurrency">
+    android:padding="8dp"
+    tools:context=".CurrencyList.CurrencyList">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-    <ListView
+    <TextView
+        android:id="@+id/textViewResult"
         android:layout_width="wrap_content"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
+
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/addInfoTextView"
-        android:layout_width="248dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="36dp"
-        android:text="Choose Your Currency"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,4 @@
     <item android:title="Add Currency"
         android:id="@+id/add" ></item>
 
-
-    <item android:title="Your Country"
-        android:id="@+id/yourCountry"></item>
-
 </menu>
